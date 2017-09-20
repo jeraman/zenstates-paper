@@ -1,0 +1,19 @@
+#N canvas 1732 341 593 357 10;
+#X floatatom 205 92 5 0 0 0 - - -;
+#X obj 207 150 snapshot~;
+#X obj 206 115 phasor~ 1;
+#X obj 281 115 metro 10;
+#X obj 282 87 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 282 0 loadbang;
+#X msg 204 44 -1;
+#X obj 410 321 ../../../assets/rgb-control;
+#X obj 206 187 s osc_amp;
+#X connect 0 0 2 0;
+#X connect 1 0 8 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;

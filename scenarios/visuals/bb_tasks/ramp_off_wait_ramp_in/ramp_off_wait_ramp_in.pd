@@ -1,0 +1,34 @@
+#N canvas 1559 69 555 603 10;
+#X obj 181 376 s r_led;
+#X obj 242 377 s g_led;
+#X obj 301 377 s b_led;
+#X floatatom 243 320 5 0 0 0 - - -;
+#X obj 239 189 line;
+#X msg 158 154 255 1000;
+#X msg 293 155 0 1000;
+#X obj 157 286 delay 2000;
+#X obj 156 313 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 257 272 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 291 270 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 256 244 select 0 255;
+#X obj 254 219 change;
+#X obj 156 109 loadbang;
+#X obj 370 518 ../../../assets/rgb-control;
+#X connect 3 0 1 0;
+#X connect 3 0 2 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 4 0 12 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 5 0;
+#X connect 9 0 7 0;
+#X connect 10 0 6 0;
+#X connect 11 0 9 0;
+#X connect 11 1 10 0;
+#X connect 12 0 11 0;
+#X connect 13 0 5 0;

@@ -1,0 +1,14 @@
+#N canvas 1646 108 475 560 10;
+#X obj 145 200 metro 10;
+#X obj 145 142 loadbang;
+#X obj 145 174 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 293 397 ../../../assets/rgb-control;
+#X obj 148 284 s osc_amp;
+#X obj 145 233 random 1000;
+#X obj 146 262 / 1000;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;

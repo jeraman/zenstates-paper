@@ -1,0 +1,52 @@
+#N canvas 487 52 890 596 10;
+#X floatatom 263 306 5 0 0 0 - - -;
+#X obj 255 93 line;
+#X msg 302 47 0 1000;
+#X obj 198 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 273 176 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 307 174 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 270 123 change;
+#X obj 197 12 loadbang;
+#X obj 468 543 ../../../assets/rgb-control;
+#X msg 194 53 1 1000;
+#X obj 195 346 r mouseX;
+#X obj 298 345 r width;
+#X obj 403 365 r mouseY;
+#X obj 506 364 r height;
+#X obj 200 427 *;
+#X obj 272 148 select 0 1;
+#X obj 275 201 t b b;
+#X obj 199 488 s osc_amp;
+#X obj 405 458 s osc_freq;
+#X obj 272 422 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 198 376 expr ($f1/$f2);
+#X obj 409 407 expr ($f1/$f2)*660;
+#X obj 277 257 delay 2000;
+#X connect 0 0 14 1;
+#X connect 0 0 19 0;
+#X connect 1 0 0 0;
+#X connect 1 0 6 0;
+#X connect 2 0 1 0;
+#X connect 3 0 9 0;
+#X connect 4 0 16 0;
+#X connect 5 0 2 0;
+#X connect 6 0 15 0;
+#X connect 7 0 9 0;
+#X connect 9 0 1 0;
+#X connect 10 0 20 0;
+#X connect 11 0 20 1;
+#X connect 12 0 21 0;
+#X connect 13 0 21 1;
+#X connect 14 0 17 0;
+#X connect 15 0 4 0;
+#X connect 15 1 5 0;
+#X connect 16 0 22 0;
+#X connect 16 1 22 1;
+#X connect 19 0 14 0;
+#X connect 20 0 14 0;
+#X connect 21 0 18 0;
+#X connect 22 0 3 0;

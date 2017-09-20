@@ -1,0 +1,15 @@
+#N canvas 1743 241 604 339 10;
+#X obj 130 215 s r_led;
+#X obj 191 216 s g_led;
+#X obj 250 216 s b_led;
+#X floatatom 195 153 5 0 0 0 - - -;
+#X obj 398 270 ../../../assets/rgb-control;
+#X obj 182 69 r mouseX;
+#X obj 302 70 r width;
+#X obj 193 97 expr (1-($f1/$f2))*255;
+#X connect 3 0 1 0;
+#X connect 3 0 2 0;
+#X connect 3 0 0 0;
+#X connect 5 0 7 0;
+#X connect 6 0 7 1;
+#X connect 7 0 3 0;
