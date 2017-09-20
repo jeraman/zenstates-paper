@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Go!</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body class="options" onload="startup()">
+
+  <h1>Trial {{currenttrial}}/{{maxtrials}}</h1>
+
+  Consider the following interactive space description:<p></p>
+
+    <img src={{imagePath}} border="5">
+
+    </p><br>
+    In your opinion, what video most accurately corresponds to this description?
+
+    <p></p><p></p>
+
+    <table style="width:80%" align="center">
+    <form autocomplete="off" id="selection" action="/options" method="post" onsubmit="finishAndSubmit()">
+
+      <tbody>
+        <tr>
+          <th>
+              <input class="radioBtn" type="radio" name="scenario" value="A" required>
+                A)
+                <video id="videoA" width="100%" controls="">
+                  <source src={{videoASource}} type="video/mp4">
+                </video><br>
+          </th>
+
+          <th>
+            <input class="radioBtn" type="radio" name="scenario" value="B" required>
+              B)
+              <video id="videoB" width="100%" controls="">
+                <source src={{videoBSource}}  type="video/mp4">
+              </video><br>
+          </th>
+
+          <th>
+            <input class="radioBtn" type="radio" name="scenario" value="C" required>
+            C)
+              <video id="videoC" width="100%" controls="">
+                <source src={{videoCSource}}  type="video/mp4">
+              </video><br>
+          </th>
+      </tr>
+
+
+      <tr>
+          <th>
+              <input class="radioBtn" type="radio" name="scenario" value="D" required>
+              D)
+                <video id="videoD" width="100%" controls="">
+                  <source src={{videoDSource}}  type="video/mp4">
+                </video><br>
+          </th>
+
+          <th>
+            <input class="radioBtn" type="radio" name="scenario" value="E" required>
+            E)
+              <video id="videoE" width="100%" controls="">
+                <source src={{videoESource}}  type="video/mp4">
+              </video><br>
+          </th>
+
+          <th>
+            <input class="radioBtn" type="radio" name="scenario" value="F" required>
+            F)
+              <video id="videoF" width="100%" controls="">
+                <source src={{videoFSource}}  type="video/mp4">
+              </video><br>
+          </th>
+
+      </tr>
+
+
+      <!--tr>
+          <th>
+            <input class="radioBtn" type="radio" name="scenario" value="G" required>
+            G)
+              <video id="videoG" width="100%" controls="">
+                <source src={{videoGSource}} type="video/mp4">
+              </video><br>
+          </th>
+
+          <th>
+              <input class="radioBtn" type="radio" name="scenario" value="H" required>
+              H)
+                <video id="videoH" width="100%" controls="">
+                  <source src={{videoHSource}} type="video/mp4">
+                </video><br>
+          </th>
+
+          <th>
+            <input class="radioBtn" type="radio" name="scenario" value="I" required>
+            I)
+              <video id="videoI" width="100%" controls="">
+                <source src={{videoISource}} type="video/mp4">
+              </video><br>
+          </th>
+
+      </tr-->
+
+
+    </tbody>
+    </table>
+
+  <p></p>
+
+  <!--When you're done, please, click on continue.</p-->
+
+  <input type="hidden" type="text" id="selectedanswer" name="selectedanswer">
+  <input type="hidden" type="text" id="rightanswer" name="rightanswer">
+  <input type="hidden" type="number" id="videotime" name="videotime">
+  <input type="hidden" type="number" id="durationtime" name="durationtime">
+
+  <button class="button" type="submit" align="center"> <span> Proceed </span> </button>
+
+  </form>
+
+  <script>
+  //var total_viewed_time = 0;
+  var vids = document.getElementsByTagName('video');
+  var videoCounter = 0;
+  var start_time_video = 0;
+  var start_duration_time = 0;
+
+  function unlock_scrolling(){
+    //debugger;
+    document.getElementsByTagName("body")[0].style.overflow = "scroll";
+    document.getElementsByTagName("body")[0].style.pointerEvents = "auto";
+  }
+
+  function startup() {
+    total_viewed_time = 0;
+    videoCounter = 0;
+
+    unlock_scrolling();
+
+    start_duration_time = new Date().getTime(); // milliseconds
+
+    //iterates over all videos
+    for( var i = 0; i < vids.length; i++ ) {
+
+      //get the current
+      var vid = vids.item(i);
+
+      //callback for counting time
+      vid.addEventListener('play', when_video_starts);
+
+      //callbacks for stopping computing time
+      vid.addEventListener('pause',when_video_is_done);
+      vid.addEventListener('stop', when_video_is_done);
+      vid.addEventListener('finish',when_video_is_done);
+    }
+  }
+
+  function when_video_starts() {
+    if (videoCounter==0)
+      start_time_video = new Date().getTime(); // millisecon
+    console.log("st: " + start_time_video);
+    videoCounter++;
+  }
+
+  function when_video_is_done() {
+    videoCounter--;
+    console.log(videoCounter);
+
+    if (videoCounter==0)
+      stop_video_timer();
+  }
+
+  function stop_video_timer() {
+    end_time_video = new Date().getTime(); // milliseconds
+    total_viewed_time += end_time_video - start_time_video; // milliseconds
+
+    if (start_time_video==0)
+      total_viewed_time = 0;
+
+    console.log("et: " + end_time_video);
+  }
+
+  function stop_duration_timer() {
+    end_duration_time = new Date().getTime(); // milliseconds
+    total_duration_time = end_duration_time - start_duration_time;
+  }
+
+  function getSelectedName() {
+    var selectedValue = getSelectedValue();
+
+    if (selectedValue=="A")  return "{{videoAName}}";
+    if (selectedValue=="B")  return "{{videoBName}}";
+    if (selectedValue=="C")  return "{{videoCName}}";
+    if (selectedValue=="D")  return "{{videoDName}}";
+    if (selectedValue=="E")  return "{{videoEName}}";
+    if (selectedValue=="F")  return "{{videoFName}}";
+    //if (selectedValue=="G")  return "{{videoGName}}";
+    //if (selectedValue=="H")  return "{{videoHName}}";
+    //if (selectedValue=="I")  return "{{videoIName}}";
+  }
+
+  function getRightAnswerName() {
+    return "{{rightAnswer}}";
+  }
+
+  function getSelectedValue() {
+    var radioBtns = document.getElementsByClassName("radioBtn");
+    var result = -1;
+
+    for(var i = 0; i < radioBtns.length; i++){
+      if(radioBtns[i].checked)
+         result = radioBtns[i].value;
+    }
+
+    return result;
+  }
+
+  function getRightAnswerValue() {
+    var radioBtns = document.getElementsByClassName("radioBtn");
+
+    console.log("item: " + vids.item(0).currentSrc);
+
+    for(var i = 0; i < vids.length; i++){
+      if(vids.item(i).currentSrc.indexOf("{{rightAnswer}}") >= 0)
+         return vids.item(i).id.charAt(5);
+    }
+
+  }
+
+
+  function finishAndSubmit() {
+
+    var result  = getSelectedValue();
+
+    if (videoCounter > 0)
+      stop_video_timer();
+
+    stop_duration_timer();
+
+    var rightanswer = getRightAnswerValue();
+    //debugger;
+
+
+    total_viewed_time = parseFloat(total_viewed_time/1000.0).toFixed(2);
+    total_duration_time    = parseFloat(total_duration_time/1000.0).toFixed(2);
+
+    if (rightanswer==result)
+    greetings = "RIGHT ANSWER!";
+    else
+    greetings = "WRONG ANSWER...";
+
+    alert(greetings + '\n\n' +
+          'You can have a short break now if you want.\n\n' +
+          'Press the button below when you are ready to continue.');
+    /*
+
+    alert('Thank you! \n\n' +
+          'You can have now a short break if you want.\n\n' +
+          'Press the button below when you are ready to continue.')
+
+    alert( greetings + "\n\n" +
+          "   - Selected answer: " + result + "\n" +
+          "   - Right answer: " + rightanswer + "\n" +
+          "   - Video time: " + total_viewed_time + " s" + "\n" +
+          "   - Total decision time: " + total_duration_time + " s");
+    */
+
+    //updating hidden html form with the results
+    document.getElementById("selectedanswer").setAttribute("value",getSelectedName());
+    document.getElementById("rightanswer").setAttribute("value",getRightAnswerName());
+    document.getElementById("videotime").setAttribute("value",total_viewed_time);
+    document.getElementById("durationtime").setAttribute("value",total_duration_time);
+
+    return true;
+
+  }
+
+  </script>
+
+
+</body>
+</html>

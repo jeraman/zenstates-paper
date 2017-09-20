@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Block {{currentblock}}</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body class="options" onload="startup()">
+
+    <h1>Block {{currentblock}}/{{maxblock}} </h1>
+
+    For this block, you are going to use a description model like this one:</p>
+
+    <img src={{imagePath}} border="5"></p><br>
+
+    <!--Symbols representing <em>input</em>, <em>output</em>, and <em>logic control</em> can appear as follows:</p-->
+    If you want, you can use the following reference table to help you:</p>
+
+    <table  align="center">
+      <tr align="center">
+        <th width=25%>Symbol</th>
+        <th width=75%>Description</th>
+      </tr>
+
+    {{#if zen}}
+        <tr align="center">
+          <td><em>width</em> </td>
+          <td>The screen's <em>width</em></td>
+        </tr>
+        <tr align="center">
+          <td><em>height</em></td>
+          <td>The screen's <em>height</em></td>
+        </tr>
+        <tr align="center">
+          <td><em>background color</em></td>
+          <td>The <em>background color</em> of the screen in RGB (<em>red, green,</em> and <em>blue</em>, from 0 to 255)</td>
+        </tr>
+        <tr align="center">
+          <td><em>sinewave</em></td>
+          <td>The sinewave played in the videos, controlled by its <em>amplitude</em> and <em>frequency</em></td>
+        </tr>
+    {{/if}}
+
+
+    {{#if pd}}
+        <tr align="center">
+          <td><em>width</em> </td>
+          <td>The screen's <em>width</em></td>
+        </tr>
+        <tr align="center">
+          <td><em>height</em></td>
+          <td>The screen's <em>height</em></td>
+        </tr>
+        <tr align="center">
+          <td><em>r_led, g_led,</em> and <em>b_led</em></td>
+          <td>The <em>background color</em> of the screen in RGB scale (red, green, and blue, from 0 to 255)</td>
+        </tr>
+        <tr align="center">
+          <td><em>osc_amp</em></td>
+          <td>The <em>amplitude</em> of the sinewave played in the videos.</td>
+        </tr>
+        <tr align="center">
+          <td><em>osc_freq</em></td>
+          <td>The <em>frequency</em> of the sinewave played in the videos.</td>
+        </tr>
+    {{/if}}
+
+
+    {{#if pde}}
+        <tr align="center">
+          <td><em>width</em> </td>
+          <td>The screen's <em>width</em></td>
+        </tr>
+        <tr align="center">
+          <td><em>height</em></td>
+          <td>The screen's <em>height</em></td>
+        </tr>
+        <tr align="center">
+          <td><em>background(r, g, b)</em></td>
+          <td>The <em>background color</em> of the screen in RGB scale (red, green, and blue, from 0 to 255)</td>
+        </tr>
+        <tr align="center">
+          <td><em>sine</em></td>
+          <td>The sinewave played in the videos</td>
+        </tr>
+        <tr align="center">
+          <td><em>sine.amp()</em></td>
+          <td>The sinewave's <em>amplitude</em></td>
+        </tr>
+        <tr align="center">
+          <td><em>sine.freq()</em></td>
+          <td>The sinewave's <em>frequency</em></td>
+        </tr>
+    {{/if}}
+
+    <tr align="center">
+      <td><em>mousePressed</em> and <em>keyPressed</em></td>
+      <td>Mouse and keyboard events</td>
+    </tr>
+    <tr align="center">
+      <td><em>mouseX</em> and <em>mouseY</em></td>
+      <td>Mouse X Y coordinates in the screen</td>
+    </tr>
+    <!--/table>
+    </p><br>
+
+  In addition, symbols representing <em>logic control</em> can appear as follows:</p>
+
+  <table align="center">
+
+    <tr align="center">
+      <th width=15%>Symbol</th>
+      <th width=80>Description</th>
+    </tr-->
+
+  {{#if pd}}
+    <tr align="center">
+      <td><em>phasor~</em> </td>
+      <td>A triangular soundwave</td>
+    </tr>
+    <tr align="center">
+      <td><em>osc~</em> </td>
+      <td>A sinusoidal soundwave</td>
+    </tr>
+    <tr align="center">
+      <td><em>random</em> </td>
+      <td>Generates a random number</td>
+    </tr>
+    <tr align="center">
+      <td><em>metro</em> </td>
+      <td>A metronome</td>
+    </tr>
+    <tr align="center">
+      <td><em>snapshot~</em> </td>
+      <td>Transforms sound samples to numbers (i.e. sampling)</td>
+    </tr>
+    <tr align="center">
+      <td><em>line</em> </td>
+      <td>Ramping a number to a certain value</td>
+    </tr>
+    <tr align="center">
+      <td><em>change</em> </td>
+      <td>Ignores repeating values in the incoming stream</td>
+    </tr>
+    <tr align="center">
+      <td><em>delay</em> </td>
+      <td>Delays an incoming message</td>
+    </tr>
+    <tr align="center">
+      <td><em>counter</em> </td>
+      <td>Incremental counter</td>
+    </tr>
+    <tr align="center">
+      <td><em>loadbang</em> </td>
+      <td>Triggers at startup</td>
+    </tr>
+    <tr align="center">
+      <td><em>gate</em> </td>
+      <td>Routes incoming values to different outputs, depending on a certain input</td>
+    </tr>
+    <tr align="center">
+      <td><em>expr</em> </td>
+      <td>Mathematical expression</td>
+    </tr>
+    <tr align="center">
+      <td><em>unpack</em> </td>
+      <td>Transforms a single list of values into three different outputs</td>
+    </tr>
+    <tr align="center">
+      <td><em>select</em> </td>
+      <td>Triggers different outputs depending on the incoming value</td>
+    </tr>
+  {{/if}}
+
+  {{#if zen}}
+    <tr align="center">
+      <td><em>ramp variable</em> </td>
+      <td>Generates a ramping number starting at <em>origin</em> until <em>destination</em> in <em>duration</em> seconds</td>
+    </tr>
+    <tr align="center">
+      <td><em>oscillator variable</em> </td>
+      <td>Generates an oscillating number with a certain <em>frequency</em> and <em>amplitude</em></td>
+    </tr>
+    <tr align="center">
+      <td><em>random variable</em> </td>
+      <td>Generates a random number between <em>minimum</em> and <em>maximum</em></td>
+    </tr>
+  {{/if}}
+
+  {{#if pde}}
+    <tr align="center">
+      <td><em>millis()</em> </td>
+      <td>Gets the current time in milliseconds</td>
+    </tr>
+    <tr align="center">
+      <td><em>Math.sin(x)</em> </td>
+      <td>Gets the mathematical sine for the number x</td>
+    </tr>
+    <tr align="center">
+      <td><em>random(x, y)</em> </td>
+      <td>Generates a random number between x and y</td>
+    </tr>
+    <tr align="center">
+      <td><em>delay(x)</em> </td>
+      <td>Delay the execution by x milliseconds</td>
+    </tr>
+    <tr align="center">
+      <td><em>Math.PI</em> </td>
+      <td>Mathematical PI number</td>
+    </tr>
+  {{/if}}
+
+  </table>
+  </p><br>
+
+    As an example, that particular description results in the following video:</p>
+
+    <video id="video" style="margin:0px auto;display:block" width="75%" controls>
+      <source src={{videoPath}} type="video/mp4">
+      </video><br></p>
+
+    If you have any question regarding how the description relates to the video, do not hesitate to ask the experimenter <strong>now</strong>. </p>
+
+    Press the button below once this relationship is clear to you.</p>
+
+    <form action="/training" method="get">
+    <button class="button" align="center"> <span> Continue </span> </button>
+    </form>
+
+    <script>
+      function startup(){
+        //debugger;
+        document.getElementsByTagName("body")[0].style.overflow = "scroll";
+        document.getElementsByTagName("body")[0].style.pointerEvents = "auto";
+      }
+    </script>
+
+</body>
+</html>

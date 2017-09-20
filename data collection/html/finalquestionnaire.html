@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final questionnaire</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body class="finalquest">
+
+  <h1>Final questionnaire</h1>
+  Considering the presented description models:</p>
+
+  <table align="center">
+    <td align="center">
+      <img width="70%" border="1" src='scenarios/multimedia/bb_tasks/backward_ramp/backward_ramp.pd.jpg'>
+      <strong>A</strong>
+    </td>
+    <td align="center">
+      <img width="100%" border="1" src='scenarios/multimedia/bb_tasks/backward_ramp/backward_ramp.pde.jpg'>
+      <strong>B</strong>
+    </td>
+    <td align="center">
+      <img width="50%" border="1" src='scenarios/multimedia/bb_tasks/backward_ramp/backward_ramp.zen.jpg'>
+      <strong>C</strong>
+    </td>
+  </table>
+
+  </p><br>
+
+  <form autocomplete="off" action="/end" method="post">
+
+    In your opinion, which one was the <em>easiest</em> to understand?<br>
+    <input type="radio" name="easier" value="Dataflow" required> A<br>
+    <input type="radio" name="easier" value="Imperative" required> B <br>
+    <input type="radio" name="easier" value="ZenStates" required> C </p>
+
+    Why?<br>
+    <textarea name="easierwhy" rows="4" cols="75%" required></textarea> </p>
+
+    In your opinion, which one was the <em>hardest</em> to understand?<br>
+    <input type="radio" name="harder" value="Dataflow" required> A<br>
+    <input type="radio" name="harder" value="Imperative" required> B<br>
+    <input type="radio" name="harder" value="ZenStates" required> C </p>
+
+    Why?<br>
+    <textarea name="harderwhy"rows="4" cols="75%" required></textarea></p><br>
+
+    <button class="button"> <span> Submit </span> </button>
+
+    </form>
+</body>
+</html>

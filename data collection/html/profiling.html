@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profiling</title>
+  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
+  <script src="sketch.js"></script-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body class="center">
+
+  <h1>Profiling</h1>
+
+<form autocomplete="off" action="/instructions" method="post">
+
+    What is your gender? <br>
+    <input type="radio" name="gender" value="Female" required> Female<br></input>
+    <input type="radio" name="gender" value="Male" required> Male<br></input>
+    <input type="radio" name="gender" value="Other" required> Other </p></input>
+
+    What is your age? <br>
+    <input type="number" name="age" min="18" max="100" required> </p></input>
+
+    How many years of experience do you have in programming (if any)?<br>
+    <input type="number" name="experience" min="0" max="100" required></p></input>
+
+    What is the programming language are you most familiar with (if any)? <br>
+    <table width='100%'>
+    <td>
+    <input type="radio" name="language" value="Max/MSP" onClick="hideDiv()"> Max/MSP</input><br>
+    <input type="radio" name="language" value="Puredata" onClick="hideDiv()"> Puredata</input><br>
+    <input type="radio" name="language" value="SuperCollider" onClick="hideDiv()"> SuperCollider</input>
+    </td>
+    <td>
+    <input type="radio" name="language" value="Processing" onClick="hideDiv()"> Java (Processing)</input><br>
+    <input type="radio" name="language" value="C++" onClick="hideDiv()"> C++ (e.g. Openframeworks, Cinder)</input><br>
+    <input type="radio" name="language" value="Javascript" onClick="hideDiv()"> Javascript (e.g. P5.js)</input>
+    </td>
+    <td>
+    <input type="radio" name="language" value="OpenMusic" onClick="hideDiv()"> OpenMusic </input><br>
+    <input type="radio" name="language" value="Python" onClick="hideDiv()"> Python </input><br>
+    <input type="radio" name="language" value="another" onClick="showDiv()"> Another one... </input><br>
+    </td>
+    </table>
+  </p>
+
+    <div id="hiddenQuestion" style="display: none;">
+    Which one? <br>
+    <input type="text" name="extralanguage" id="extralanguage"></input></p>
+    </div>
+    <br>
+    <button class="button"> <span> Submit </span> </button>
+
+</form>
+
+<script>
+  function showDiv(){
+     document.getElementById('hiddenQuestion').style.display = "block";
+     document.getElementById('extralanguage').required = true;
+  }
+  function hideDiv(){
+     document.getElementById('hiddenQuestion').style.display = "none";
+     document.getElementById('extralanguage').required = false;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profiling</title>
+  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
+  <script src="sketch.js"></script-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body class="center">
+
+  <h1>User Study</h1>
+
+  <!--Car:
+  Here we get to know more about you!</p>
+  <select name="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="fiat">Fiat</option>
+  <option value="audi">Audi</option>
+</select>
+</p-->
+
+<form autocomplete="off" action="/introduction" method="post">
+    Your ID:<br>
+    <input type="text" name="id" size="30%" required></p>
+    </p><br>
+
+    <button class="button"> <span> Start! </span> </button>
+
+</form>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBZ-i8JQvr7i4TA9kSMs4CEVHRLC_ORW2E",
+    authDomain: "zenstates-experiment-01.firebaseapp.com",
+    databaseURL: "https://zenstates-experiment-01.firebaseio.com",
+    projectId: "zenstates-experiment-01",
+    storageBucket: "zenstates-experiment-01.appspot.com",
+    messagingSenderId: "926782347556"
+  };
+  firebase.initializeApp(config);
+
+</script>
+
+</body>
+</html>
