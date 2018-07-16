@@ -3,18 +3,18 @@ In this prototype, we use [Hierarchical Finite State Machines (HFSM)](https://en
 
 For composing, you need to create a set of _States_. These states are connected to one another via logical _Connections_. The execution of the HFSM always starts at the "Begin" state, following these logical connections towards the final the "End" state, where execution halts.
 
-![image](gif-tutorial.gif)
+![image](assets/gif-tutorial.gif)
 
 States are composed by a set of _Tasks_. Tasks are the most basic media actions that can happen inside a state (e.g. light, audio, haptics). Whenever a certain state is executed, all tasks associated to it are set to action in parallel.
 
-![image](gif-tasks.gif)
+![image](assets/gif-tasks.gif)
 
 At any moment, you can use _Blackboard_ variables to enrich your composition (e.g. use the mouse x position to control the volume, or to trigger certain connections).
 
 # Manual
 This manual is organized according to functionalities available for each data structure as follows:
 
-![image](screenshot.jpg)
+![image](assets/screenshot.jpg)
 
 ## State
 Abstract entity that represents a certain time period in the composition. Possible functionalities include:
