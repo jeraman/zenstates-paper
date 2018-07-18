@@ -6,6 +6,9 @@
 # August 14 2017 #############
 #############################
 
+#changing path
+setwd("~/Documents/dev/zenstates-paper/data analysis")
+
 # import json library
 library(jsonlite)
 library(plyr)
@@ -606,6 +609,9 @@ bootstrap_and_estimation_plots <- function() {
   # Simple bargraphs with 95%CIs as error bars
   dodge <- position_dodge(width = 0.9)
   
+  #boxplot(decision_speed ~ block, only_right_answers, col="blue", xlab = "Conceptual model", ylab= "Decision time (in seconds)", names=c("Dataflow", "Imperative", "ZenStates"))
+  
+  
   #Decision speed
   bars.time.block <- ggplot(raw.sse.time.block, aes(x = reorder(block, decision_speed), y = decision_speed, fill = block)) + 
     geom_bar(stat = "identity", position = dodge) + 
@@ -617,7 +623,7 @@ bootstrap_and_estimation_plots <- function() {
   bars.acc.block <- ggplot(raw.sse.acc.block, aes(x = reorder(block, decision_accuracy), y = decision_accuracy, fill = block)) + 
     geom_bar(stat = "identity", position = dodge) + 
     geom_errorbar(aes(ymin=CIl, ymax=CIh), width=.2, position=position_dodge(.9)) +
-    labs(x = expression(bold("Conceptual model")), y = expression(bold("Decision accuracy")))
+    labs(x = expression(bold("Conceptual model")), y = expression(bold("Decision accuracy")), names=c("Dataflow", "Imperative", "ZenStates"))
   print(bars.acc.block)
   
   #Print distribution graphs with CIs
